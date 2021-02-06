@@ -8,7 +8,7 @@ class StudentsSerializer(serializers.ModelSerializer):
         fields = ['id','nome','rg','cpf','data_nascimento']
 
 
-class SubjectSerializer(serializers.ModelSerializer):
+class SubjectsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Subject
         fields = '__all__'
