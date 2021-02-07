@@ -26,3 +26,18 @@ class Subject(models.Model):
     def __str__(self):
         return self.descricao
     
+
+class Registration(models.Model):
+    PERIODO = (
+    ('M','Matutino'),
+    ('V', 'Vespertino'),
+    ('N', 'Noturno')
+    )
+
+    aluno = models.ForeignKey(Student, on_delete = models.CASCADE)
+    curso = models.ForeignKey(Subject, on_delete = models.CASCADE)
+    periodo = models.CharField(max_length=1, choices=PERIODO, blank=False, null=False, default='M')
+    
+
+
+    
