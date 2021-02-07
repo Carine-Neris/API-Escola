@@ -17,4 +17,15 @@ class SubjectsSerializer(serializers.ModelSerializer):
 class RegistrationsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Registration
-        fields = '__all__'
+        exclude = []
+
+
+class ListRegistrationStudentSerializer(serializers.ModelSerializer):
+    curso = serializers.ReadOnlyField(source='curso.descricao')
+    periodo = serializers.SerializerMethodField()
+    class Meta:
+        model = Registration
+        fields = ['curso','periodo']
+
+    def get_periodo(self,obj):
+        return obj.get_periodo_display()
