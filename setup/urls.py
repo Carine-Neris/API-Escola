@@ -16,12 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from rest_framework import routers
-from school.views import StudentsViewSet, SubjectsViewSet
+from school.views import StudentsViewSet, SubjectsViewSet, RegistrationsViewSet
 
 
 router = routers.DefaultRouter()
 router.register('alunos',StudentsViewSet, basename='Alunos')
 router.register('cursos',SubjectsViewSet, basename='Cursos')
+router.register('matriculas',RegistrationsViewSet, basename='Matriculas')
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
