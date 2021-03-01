@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from rest_framework import routers
-from school.views import StudentsViewSet, SubjectsViewSet, RegistrationsViewSet,ListRegistrationStudent
+from school.views import StudentsViewSet, SubjectsViewSet, RegistrationsViewSet,ListRegistrationStudent, ListStudentsRegistration
 
 
 router = routers.DefaultRouter()
@@ -28,5 +28,6 @@ router.register('matriculas',RegistrationsViewSet, basename='Matriculas')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
-    path('aluno/<int:pk>/matriculas/',ListRegistrationStudent.as_view())
+    path('aluno/<int:pk>/matriculas/',ListRegistrationStudent.as_view()),
+    path('curso/<int:pk>/matriculas/',ListStudentsRegistration.as_view())
 ]

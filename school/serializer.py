@@ -29,3 +29,10 @@ class ListRegistrationStudentSerializer(serializers.ModelSerializer):
 
     def get_periodo(self,obj):
         return obj.get_periodo_display()
+
+
+class ListStudentsRegistrationsSerializer(serializers.ModelSerializer):
+    aluno_nome = serializers.ReadOnlyField(source='aluno.nome')
+    class Meta:
+        model = Registration
+        fields = ['aluno_nome']
