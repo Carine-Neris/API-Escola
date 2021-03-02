@@ -1,4 +1,6 @@
 from rest_framework import viewsets,generics
+from rest_framework.authentication import BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 from school.models import Student, Subject, Registration
 from school.serializer import StudentsSerializer, SubjectsSerializer, RegistrationsSerializer,ListRegistrationStudentSerializer,ListStudentsRegistrationsSerializer
 
@@ -7,18 +9,24 @@ class StudentsViewSet(viewsets.ModelViewSet):
     """Exibe todos os alunos"""
     queryset = Student.objects.all()
     serializer_class = StudentsSerializer
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
 
 
 class SubjectsViewSet(viewsets.ModelViewSet):
     """Exibe todos os cursos"""
     queryset = Subject.objects.all()
     serializer_class = SubjectsSerializer
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
 
 
 class RegistrationsViewSet(viewsets.ModelViewSet):
     """Lista as Matriculas"""
     queryset = Registration.objects.all()
     serializer_class = RegistrationsSerializer
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
 
 
 class ListRegistrationStudent(generics.ListAPIView):
@@ -28,6 +36,8 @@ class ListRegistrationStudent(generics.ListAPIView):
         return queryset
 
     serializer_class = ListRegistrationStudentSerializer
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
 
 
 class ListStudentsRegistration(generics.ListAPIView):
@@ -38,5 +48,6 @@ class ListStudentsRegistration(generics.ListAPIView):
         return queryset
 
     serializer_class = ListStudentsRegistrationsSerializer
-        
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]      
 
